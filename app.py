@@ -28,8 +28,8 @@ def home():
         f"/api/v1.0/precipitation<br>"
         f"/api/v1.0/stations<br>"
         f"/api/v1.0/tobs<br>"
-        f"/api/v1.0/08-19-2016<br>"
-        f"/api/v1.0/08-19-2016/08-18-2017"
+        f"/api/v1.0/{{YYYY-MM-DD}}<br>"
+        f"/api/v1.0/{{YYYY-MM-DD}}/{{YYYY-MM-DD}}"
     )
 
 # Precipitation route
@@ -63,26 +63,97 @@ def tobs():
     # Create session
     session = Session(engine)
 
+    # Get most active station
+    observation_counts = session.query(Measurement.station, func.count(Measurement.station)).\
+    group_by(Measurement.station).\
+    order_by(func.count(Measurement.station).desc()).\
+    all()
+
+    most_active_stn = observation_counts[0][0]
+
     # Get most recent date and 12 months prior
     date = session.query(Measurement.date).\
     filter(Measurement.station == most_active_stn).\
     order_by(Measurement.date.desc()).\
-    first()
-    temp_query_date = dt.date(2017,8,18) - dt.timedelta(days = 365)
+    first()[0]
+    year = int(date[0:4])
+    month = int(date[5:7])
+    day = int(date[8:10])
+    temp_query_date = dt.date(year, month, day) - dt.timedelta(days = 365)
 
     # Query
-    last_year_temps = session.query(Measurement.tobs).\
+    results = session.query(Measurement.date, Measurement.tobs).\
     filter(Measurement.date > temp_query_date).\
-    filter(Measurement.station == most_active_stn).statement
+    filter(Measurement.station == most_active_stn).all()
 
     # Close session
     session.close()
 
+    # Create dictionary
+    previous_year_temps = [{result[0]:result[1]} for result in results[:len(results)]]
+    return jsonify(previous_year_temps)
+
+
 # Min, max, avg route (start only)
-#@app.route('/api/v1.0/<start>')
+@app.route('/api/v1.0/<start>')
+def start_summary(start):
+
+    try:
+        # Create datetime object
+        if len(start) != 10:
+            return jsonify({"error": f"{start} is not a valid date. please try again with YYYY-MM-DD format"}), 404
+        year = int(start[0:4])
+        month = int(start[5:7])
+        day = int(start[8:10])
+        query_date = dt.date(year, month, day)
+    except:
+        return jsonify({"error": f"{start} is not a valid date. please try again with YYYY-MM-DD format"}), 404
+
+    # Create session, query, and close session
+    session = Session(engine)
+    results = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)).\
+    filter(Measurement.date >= query_date).\
+    all()
+    session.close()
+
+    # Create dictionary
+    summary = [{'date_start':query_date, 'min':result[0], 'max':result[1], 'avg':result[2]} for result in results[:len(results)]]
+
+    return jsonify(summary)
 
 # Min, max, avg route
-#@app.route('/api/v1.0/<start>/<end>')
+@app.route('/api/v1.0/<start>/<end>')
+def start_end_summary(start, end):
+
+    try:
+        # Create datetime object
+        if len(start) != 10 or len(end) !=10:
+            return jsonify({"error": f"Please try again with YYYY-MM-DD format"}), 404
+        # Create start datetime object
+        start_year = int(start[0:4])
+        start_month = int(start[5:7])
+        start_day = int(start[8:10])
+        start_query_date = dt.date(start_year, start_month, start_day)
+
+        # Create end datetime object
+        end_year = int(end[0:4])
+        end_month = int(end[5:7])
+        end_day = int(end[8:10])
+        end_query_date = dt.date(end_year, end_month, end_day)
+    except:
+        return jsonify({"error": f"Please try again with YYYY-MM-DD format"}), 404
+
+    # Create session, query, and close session
+    session = Session(engine)
+    results = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)).\
+    filter(Measurement.date >= start_query_date).\
+    filter(Measurement.date <= end_query_date).all()
+
+    session.close()
+
+    # Create dictionary
+    summary = [{'date_start':start_query_date, 'date_end':end_query_date, 'min':result[0], 'max':result[1], 'avg':result[2]} for result in results[:len(results)]]
+    return jsonify(summary)
 
 
 # Code to run app
