@@ -1,43 +1,7 @@
-# sqlalchemy-challenge
-Repository for UCI DA Bootcamp SQLAlchemy Challenge
+# SQL Hawaii Weather Analysis
+Using pandas, scipy, and SQLAlchemy to visualize and test data from Hawaiian weather stations SQL database.
 
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">project_title</h3>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-  </p>
-</p>
-
-
+Created by Sunny Kim
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -66,18 +30,14 @@ Repository for UCI DA Bootcamp SQLAlchemy Challenge
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
+## Project Description
+An analysis of Hawaiian climate data queried from a weather station SQL database. This project explores levels of precipitation over the course of a year, the distribution of the most active weather station's recorded temperatures, and runs a paired t-test to test if there is a statistically meaningful difference between the recorded temperature between June and December. Additionally, this project contains an API built with Flask that provides JSON responses of the SQL climate data.
 
 ### Built With
 
-* []()
-* []()
-* []()
+* Python - pandas, numpy, scipy, matplotlib, datetime
+* SQLAlchemy
+* Flask
 
 
 
@@ -86,19 +46,11 @@ Here's a blank template to get started:
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis.git
    ```
 2. Install NPM packages
    ```sh
@@ -110,32 +62,17 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+##
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+## Flask API
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Sunwoo Kim - s.kim32415@gmail.com
+Sunny Kim - s.kim32415@gmail.com
 
-Project Link: [https://github.com/sunwoo-kim20/sqlalchemy-challenge](https://github.com/sunwoo-kim20/sqlalchemy-challenge)
+Project Link: [https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis)
 
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
