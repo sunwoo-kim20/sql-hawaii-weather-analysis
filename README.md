@@ -68,11 +68,11 @@ To get a local copy up and running follow these simple steps.
 
 ![Histogram of temperature data from most active station](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis/blob/main/docs/images/temp-histogram.png?raw=true)
 
-## Flask API
-Home page of Flask API with available routes
+### Home page of Flask API with available routes
+
 ![Flask API Home with routes](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis/blob/main/docs/images/api-routes.png?raw=true)
 
-Example of route's JSON response
+### Example of route's JSON response
 ![Stations Route response](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis/blob/main/docs/images/api-station-call.png?raw=true)
 
 
