@@ -31,7 +31,7 @@ Created by Sunny Kim
 ## About The Project
 
 ## Project Description
-An analysis of Hawaiian climate data queried from a weather station SQL database. This project explores levels of precipitation over the course of a year, the distribution of the most active weather station's recorded temperatures, and runs a paired t-test to test if there is a statistically meaningful difference between the recorded temperature between June and December. Additionally, this project contains an API built with Flask that provides JSON responses of the SQL climate data.
+An analysis of Hawaiian climate data queried from a weather station SQL database. This project explores levels of precipitation over the course of a year, the distribution of the most active weather station's recorded temperatures, and runs t-tests to test if there is a statistically meaningful difference between the recorded temperature between June and December. Additionally, this project contains an API built with Flask that provides JSON responses of the SQL climate data.
 
 ### Built With
 
@@ -52,19 +52,28 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis.git
    ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
+2. Run Flask application from terminal
+  ```sh
+  python app.py
+  ```
+3. Run on local server http://127.0.0.1:5000/
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-##
+## Data Visualization
+![Precipitation Bar Chart](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis/blob/main/docs/images/precipitation-chart.png?raw=true)
+
+
+![Histogram of temperature data from most active station](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis/blob/main/docs/images/temp-histogram.png?raw=true)
 
 ## Flask API
+Home page of Flask API with available routes
+![Flask API Home with routes](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis/blob/main/docs/images/api-routes.png?raw=true)
+
+Example of route's JSON response
+![Stations Route response](https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis/blob/main/docs/images/api-station-call.png?raw=true)
 
 
 
