@@ -53,9 +53,9 @@ To get a local copy up and running follow these simple steps.
    git clone https://github.com/sunwoo-kim20/sql-hawaii-weather-analysis.git
    ```
 2. Run Flask application from terminal
-  ```sh
-  python app.py
-  ```
+   ```sh
+   python app.py
+   ```
 3. Run on local server http://127.0.0.1:5000/
 
 
